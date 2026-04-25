@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import OmniforceLogo from "./OmniforceLogo";
+import OmniforceLogo from "@/components/ui/OmniforceLogo";
 
 const NAV_LINKS = [
   { label: "Projects", href: "#projects" },

@@ -1,10 +1,10 @@
-import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
-import ProjectsShowcase from "@/components/ProjectsShowcase";
-import MascotSection from "@/components/MascotSection";
-import AILearningHub from "@/components/AILearningHub";
-import AboutSection from "@/components/AboutSection";
-import Footer from "@/components/Footer";
+import Navigation from "@/components/layout/Navigation";
+import HeroSection from "@/components/sections/HeroSection";
+import ProjectsShowcase from "@/components/sections/ProjectsShowcase";
+import MascotSection from "@/components/sections/MascotSection";
+import AILearningHub from "@/components/sections/AILearningHub";
+import AboutSection from "@/components/sections/AboutSection";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (

@@ -2,61 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useTypewriter } from "@/hooks/useTypewriter";
+import ProgressBar from "@/components/ui/ProgressBar";
 
-const ThreeScene = dynamic(() => import("./ThreeScene"), { ssr: false });
-
-/* ---- Typing animation hook ---- */
-function useTypewriter(words: string[], speed = 80, pause = 1800) {
-  const [idx, setIdx] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = words[idx % words.length];
-    const delay = deleting ? speed / 2 : speed;
-
-    const timeout = setTimeout(() => {
-      if (!deleting && displayed === current) {
-        setTimeout(() => setDeleting(true), pause);
-        return;
-      }
-      if (deleting && displayed === "") {
-        setDeleting(false);
-        setIdx((i) => i + 1);
-        return;
-      }
-      setDisplayed((d) =>
-        deleting ? d.slice(0, -1) : current.slice(0, d.length + 1)
-      );
-    }, delay);
-
-    return () => clearTimeout(timeout);
-  }, [displayed, deleting, idx, words, speed, pause]);
-
-  return displayed;
-}
-
-/* ---- Construction countdown ---- */
-function ProgressBar({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="w-full mb-3">
-      <div className="flex justify-between text-xs text-slate-400 mb-1">
-        <span>{label}</span>
-        <span>{value}%</span>
-      </div>
-      <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-purple-500"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${value}%` }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          viewport={{ once: true }}
-        />
-      </div>
-    </div>
-  );
-}
+const ThreeScene = dynamic(() => import("@/components/three/ThreeScene"), { ssr: false });
 
 export default function HeroSection() {
   const tagline = useTypewriter([

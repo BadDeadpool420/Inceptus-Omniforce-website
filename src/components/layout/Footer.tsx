@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import OmniforceLogo from "./OmniforceLogo";
+import type { FooterColumn } from "@/types";
+import OmniforceLogo from "@/components/ui/OmniforceLogo";
 
-const LINKS = [
+const LINKS: FooterColumn[] = [
   {
     section: "Explore",
     items: [
@@ -77,8 +78,8 @@ export default function Footer() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      target={"target" in item ? item.target : undefined}
-                      rel={"target" in item ? "noopener noreferrer" : undefined}
+                      target={item.target}
+                      rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                       className="text-sm text-slate-400 hover:text-cyan-400 transition-colors duration-200"
                     >
                       {item.label}
