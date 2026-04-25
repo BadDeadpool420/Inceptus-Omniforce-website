@@ -126,13 +126,18 @@ Priority test targets:
 
 ## Phase 6 — Deployment 📋
 
+**Hosting:** Namecheap · **Domain (registered):** `www.inceptusomniforce.com` · **Repo:** `BadDeadpool420/Inceptus-Omniforce-website`
+
 | Task | Notes |
 |------|-------|
-| Deploy to Vercel | Connect GitHub → Vercel project |
-| Custom domain | `inceptusomniforce.com` or similar |
-| Environment variables | `RESEND_API_KEY`, etc. in Vercel + Copilot `copilot` env |
-| Preview deployments | Automatic via Vercel on every PR |
-| GitHub Actions CI | Lint + type-check on every PR |
+| Build static export | Run `npm run build` (outputs to `out/`) — ready for Namecheap upload |
+| Upload to Namecheap | Upload the contents of `out/` to `public_html/` via cPanel File Manager or FTP |
+| Domain already live | `http://www.inceptusomniforce.com` — managed in Namecheap DNS panel |
+| Enable HTTPS | Activate free AutoSSL / Let's Encrypt in Namecheap cPanel → `https://www.inceptusomniforce.com` |
+| Redirect HTTP → HTTPS | Add `.htaccess` rule in `public_html/` once SSL is active |
+| Environment variables | Store secrets (e.g. `RESEND_API_KEY`) in `.env.local` locally; bake public vars into build |
+| GitHub Actions CI | Lint + type-check on every PR (already wired via `copilot-setup-steps.yml`) |
+| Auto-deploy on merge | Optional: add a `deploy.yml` workflow using `appleboy/scp-action` to FTP/SCP the `out/` folder to Namecheap on push to `main` |
 
 ---
 
@@ -148,7 +153,6 @@ Priority test targets:
 ### Servers to consider adding (future)
 | Server | Use case | Install |
 |--------|----------|---------|
-| **Vercel MCP** | Query deployment status, manage env vars | [vercel.com/docs/mcp](https://vercel.com/docs/mcp) |
 | **Resend MCP** | Send transactional email from Copilot sessions | npm: `@resend/mcp` |
 | **Figma MCP** | Pull design tokens directly from Figma files | [figma.com/developers/mcp](https://www.figma.com/developers/mcp) |
 | **Supabase MCP** | Read/write a Postgres DB for dynamic content | [supabase.com/docs/guides/ai/mcp](https://supabase.com/docs/guides/ai/mcp) |
@@ -180,5 +184,5 @@ color palette, and data-decoupling rules.
 1. **`Button.tsx` + `Badge.tsx`** — unblock all other components that need them
 2. **`/projects` route** — most-requested page; data is already ready in `lib/data/projects.ts`
 3. **`vitest` setup** — add testing before the codebase grows further
-4. **`generateMetadata()`** on `app/layout.tsx` — 5-minute SEO win
-5. **Deploy to Vercel** — get a real URL to share
+4. **`generateMetadata()`** per sub-page — 5-minute SEO win (metadataBase already set to `https://www.inceptusomniforce.com`)
+5. **Deploy to Namecheap** — run `npm run build`, upload `out/` to `public_html/` via cPanel, activate AutoSSL
