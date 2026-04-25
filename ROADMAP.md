@@ -26,23 +26,24 @@
 
 ---
 
-## Phase 1 — Core Pages 📋
+## Phase 1 — Core Pages 🚧
 
-### 1.1 Projects page  `/projects`
-- Full filterable project grid
-- Filter by status (Live / Beta / WIP) and tags
-- Each card links to a project detail page `/projects/[slug]`
-- **Skills needed:** `filesystem` MCP (read existing data), `fetch` MCP (check Framer Motion filter docs)
+### 1.1 Projects page  `/projects` ✅
+- ✅ Full filterable project grid (`app/projects/page.tsx`)
+- ✅ Filter by status (Live / Beta / WIP) and tags
+- ✅ `generateMetadata()` with OG tags
+- ✅ AnimatePresence transitions + empty-state handling
+- 📋 Individual project detail pages `/projects/[slug]` (next up)
 - **Data:** extend `src/lib/data/projects.ts` with `slug`, `longDescription`, `screenshots[]`
 
-### 1.2 Learn AI page  `/learn`
+### 1.2 Learn AI page  `/learn` 📋
 - Expanded AI learning hub with route-level layout
 - Individual course pages `/learn/[courseId]`
 - Lesson viewer with code blocks + copy button
 - **Skills needed:** `filesystem` MCP to scaffold route structure
 - **Data:** extend `src/lib/data/courses.ts` with `lessons[]` array
 
-### 1.3 Mascot page  `/mascot`
+### 1.3 Mascot page  `/mascot` 📋
 - Full-screen Nova showcase
 - Lore timeline, art gallery (lightbox), ability cards
 - Video autoplay with poster fallback
@@ -50,20 +51,20 @@
 
 ---
 
-## Phase 2 — Shared UI Component Library 📋
+## Phase 2 — Shared UI Component Library 🚧
 
 Create these reusable primitives in `src/components/ui/`:
 
-| Component | Description | Priority |
-|-----------|-------------|----------|
-| `Button.tsx` | Primary / secondary / ghost variants | 🔴 High |
-| `Badge.tsx` | Status chips (Live / Beta / WIP) | 🔴 High |
-| `Card.tsx` | Glass card with optional glow border | 🔴 High |
-| `SectionHeader.tsx` | Label + h2 + subtitle block | 🟡 Medium |
-| `GlowCard.tsx` | Card with colored radial glow on hover | 🟡 Medium |
-| `CodeBlock.tsx` | Syntax-highlighted code with copy | 🟡 Medium |
-| `Modal.tsx` | Accessible dialog/lightbox | 🟡 Medium |
-| `Toast.tsx` | Notification snackbar | 🟢 Low |
+| Component | Description | Priority | Status |
+|-----------|-------------|----------|--------|
+| `Button.tsx` | Primary / secondary / ghost variants | 🔴 High | ✅ Done |
+| `Badge.tsx` | Status chips (Live / Beta / WIP) | 🔴 High | ✅ Done |
+| `Card.tsx` | Glass card with optional glow border | 🔴 High | ✅ Done |
+| `SectionHeader.tsx` | Label + h2 + subtitle block | 🟡 Medium | 📋 Planned |
+| `GlowCard.tsx` | Card with colored radial glow on hover | 🟡 Medium | 📋 Planned |
+| `CodeBlock.tsx` | Syntax-highlighted code with copy | 🟡 Medium | 📋 Planned |
+| `Modal.tsx` | Accessible dialog/lightbox | 🟡 Medium | 📋 Planned |
+| `Toast.tsx` | Notification snackbar | 🟢 Low | 📋 Planned |
 
 ---
 
@@ -85,29 +86,16 @@ Create these reusable primitives in `src/components/ui/`:
 
 ---
 
-## Phase 4 — Testing 📋
+## Phase 4 — Testing 🚧
 
-No tests exist yet. Recommended install:
-
-```bash
-npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
-```
-
-Add `vitest.config.ts`:
-```ts
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-export default defineConfig({
-  plugins: [react()],
-  test: { environment: "jsdom", globals: true },
-});
-```
-
-Priority test targets:
-- `hooks/useTypewriter` — unit test cycling + deletion logic
-- `lib/data/projects` — validate schema of each entry
-- `ui/ProgressBar` — snapshot + animation class test
-- `ui/Badge` — renders correct color per status
+| Task | Status |
+|------|--------|
+| Install Vitest + jsdom + Testing Library | ✅ Done |
+| `vitest.config.ts` with `@/` alias support | ✅ Done |
+| `src/__tests__/data/projects.test.ts` — schema validation | ✅ Done |
+| `src/__tests__/ui/Badge.test.tsx` — renders correct label + colour | ✅ Done |
+| `hooks/useTypewriter` — cycling + deletion logic | 📋 Planned |
+| `ui/ProgressBar` — snapshot + animation class | 📋 Planned |
 
 ---
 
@@ -181,8 +169,10 @@ color palette, and data-decoupling rules.
 
 ## Next Immediate Actions (start here)
 
-1. **`Button.tsx` + `Badge.tsx`** — unblock all other components that need them
-2. **`/projects` route** — most-requested page; data is already ready in `lib/data/projects.ts`
-3. **`vitest` setup** — add testing before the codebase grows further
-4. **`generateMetadata()`** per sub-page — 5-minute SEO win (metadataBase already set to `https://www.inceptusomniforce.com`)
-5. **Deploy to Namecheap** — run `npm run build`, upload `out/` to `public_html/` via cPanel, activate AutoSSL
+1. ✅ **`Button.tsx` + `Badge.tsx` + `Card.tsx`** — reusable UI primitives ready
+2. ✅ **`/projects` route** — live with status + tag filtering, `generateMetadata`, AnimatePresence
+3. ✅ **`vitest` setup** — tests running for data schema + Badge component
+4. ✅ **`generateMetadata()`** per sub-page — `/projects` page has full OG metadata
+5. **`/learn` route** — next sub-page to build (data already in `lib/data/courses.ts`)
+6. **`/mascot` route** — dedicated Nova page
+7. **Deploy to Namecheap** — run `npm run build`, upload `out/` to `public_html/` via cPanel, activate AutoSSL
