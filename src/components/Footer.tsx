@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import OmniforceLogo from "./OmniforceLogo";
 
 const LINKS = [
   {
     section: "Explore",
     items: [
       { label: "Projects", href: "#projects" },
+      { label: "Mascot", href: "#mascot" },
       { label: "Learn AI", href: "#learn" },
       { label: "About", href: "#about" },
     ],
@@ -43,14 +45,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand column */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-black text-black text-sm shadow-lg shadow-cyan-500/25">
-                IO
-              </div>
-              <div>
-                <div className="font-black text-white text-sm">INCEPTUS</div>
-                <div className="font-black text-cyan-400 text-sm -mt-1">OMNIFORCE</div>
-              </div>
+            <div className="mb-4">
+              <OmniforceLogo size={42} withWordmark />
             </div>
             <p className="text-slate-500 text-sm leading-relaxed mb-4">
               A hub for AI projects, learning, and tools — built for builders, by a builder.

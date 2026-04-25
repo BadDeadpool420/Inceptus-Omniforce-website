@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import OmniforceLogo from "./OmniforceLogo";
 
 const NAV_LINKS = [
   { label: "Projects", href: "#projects" },
+  { label: "Mascot", href: "#mascot" },
   { label: "Learn AI", href: "#learn" },
   { label: "About", href: "#about" },
 ];
@@ -38,12 +40,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-black text-black text-sm shadow-lg shadow-cyan-500/25 group-hover:shadow-cyan-500/50 transition-shadow duration-300">
-              IO
-            </div>
-            <span className="font-black text-white text-sm tracking-wide hidden sm:block group-hover:text-cyan-300 transition-colors duration-300">
-              INCEPTUS<span className="text-cyan-400"> OMNIFORCE</span>
-            </span>
+            <OmniforceLogo size={36} withWordmark />
           </a>
 
           {/* Desktop nav */}
