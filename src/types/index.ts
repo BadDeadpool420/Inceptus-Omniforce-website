@@ -39,3 +39,9 @@ export interface FooterColumn {
   section: string;
   items: NavLink[];
 }
+
+export interface Stat {
+  value: string;
+  label: string;
+  icon: string;
+}

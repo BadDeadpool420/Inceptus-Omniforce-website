@@ -1,11 +1,19 @@
 "use client";
 
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import ProgressBar from "@/components/ui/ProgressBar";
 
 const ThreeScene = dynamic(() => import("@/components/three/ThreeScene"), { ssr: false });
+
+/** Lightweight placeholder shown while the 3D canvas is loading */
+function ThreeFallback() {
+  return (
+    <div className="absolute inset-0 bg-gradient-radial from-purple-900/20 via-slate-900/50 to-[#020617]" />
+  );
+}
 
 export default function HeroSection() {
   const tagline = useTypewriter([
@@ -22,7 +30,9 @@ export default function HeroSection() {
     >
       {/* 3D Canvas background */}
       <div className="absolute inset-0 z-0">
-        <ThreeScene />
+        <Suspense fallback={<ThreeFallback />}>
+          <ThreeScene />
+        </Suspense>
       </div>
 
       {/* Gradient overlays for depth */}

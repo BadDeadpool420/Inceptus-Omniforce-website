@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "@/types";
-import { PROJECTS, STATUS_CONFIG } from "@/lib/data/projects";
+import { PROJECTS } from "@/lib/data/projects";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
@@ -11,8 +12,6 @@ import Card from "@/components/ui/Card";
 type StatusFilter = Project["status"] | "all";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const status = STATUS_CONFIG[project.status];
-
   return (
     <motion.div
       key={project.id}
@@ -113,7 +112,7 @@ export default function ProjectsGrid() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors text-sm mb-6"
           >
@@ -126,7 +125,7 @@ export default function ProjectsGrid() {
               />
             </svg>
             Back to Home
-          </a>
+          </Link>
           <span className="text-cyan-400 text-sm font-mono uppercase tracking-widest mb-3 block">
             {"// Projects"}
           </span>

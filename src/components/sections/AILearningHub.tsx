@@ -164,15 +164,23 @@ export default function AILearningHub() {
             <p className="text-slate-400 text-sm mb-6">
               Interactive coding environments, AI-powered quizzes, community forums, and personalized learning paths are all in development. Join the waitlist to be first in.
             </p>
-            <div className="flex gap-2 max-w-sm mx-auto">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/50 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
-              />
-              <button className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
-                Notify Me
-              </button>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto items-center justify-center">
+              <div className="flex gap-2 flex-1 w-full">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="flex-1 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700/50 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                />
+                <button className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
+                  Notify Me
+                </button>
+              </div>
+              <a
+                href="/learn"
+                className="text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors whitespace-nowrap"
+              >
+                Explore Learn Hub →
+              </a>
             </div>
           </div>
         </motion.div>

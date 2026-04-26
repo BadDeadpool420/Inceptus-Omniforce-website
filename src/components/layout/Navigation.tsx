@@ -1,19 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import OmniforceLogo from "@/components/ui/OmniforceLogo";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 const NAV_LINKS = [
-  { label: "Projects", href: "#projects" },
-  { label: "Mascot", href: "#mascot" },
-  { label: "Learn AI", href: "#learn" },
-  { label: "About", href: "#about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Mascot", href: "/mascot" },
+  { label: "Learn AI", href: "/learn" },
+  { label: "About", href: "/#about" },
 ];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const progress = useScrollProgress();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -27,6 +30,15 @@ export default function Navigation() {
         scrolled ? "top-0" : "top-9"
       }`}
     >
+      {/* Scroll progress bar */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-slate-800/60 z-40">
+        <motion.div
+          className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-amber-500"
+          style={{ width: `${progress * 100}%` }}
+          transition={{ duration: 0 }}
+        />
+      </div>
+
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -39,31 +51,31 @@ export default function Navigation() {
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group">
             <OmniforceLogo size={36} withWordmark />
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
-            <a
-              href="#learn"
+            <Link
+              href="/learn"
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 transition-all duration-200"
             >
               🧠 Get Started
-            </a>
+            </Link>
 
             {/* Mobile menu button */}
             <button
@@ -99,22 +111,22 @@ export default function Navigation() {
             >
               <div className="pt-3 pb-2 flex flex-col gap-1">
                 {NAV_LINKS.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className="px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
-                <a
-                  href="#learn"
+                <Link
+                  href="/learn"
                   onClick={() => setMenuOpen(false)}
                   className="mt-1 px-4 py-3 rounded-xl text-sm font-semibold text-center bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-500/30 text-cyan-300"
                 >
                   🧠 Get Started
-                </a>
+                </Link>
               </div>
             </motion.div>
           )}
