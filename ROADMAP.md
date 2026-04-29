@@ -36,22 +36,29 @@
 - 📋 Individual project detail pages `/projects/[slug]` (next up)
 - **Data:** extend `src/lib/data/projects.ts` with `slug`, `longDescription`, `screenshots[]`
 
-### 1.2 Learn AI page  `/learn` 📋
-- Expanded AI learning hub with route-level layout
-- Individual course pages `/learn/[courseId]`
-- Lesson viewer with code blocks + copy button
-- **Skills needed:** `filesystem` MCP to scaffold route structure
+### 1.2 Learn AI page  `/learn` ✅
+- ✅ Expanded AI learning hub with level-filter (`app/learn/page.tsx`)
+- ✅ Course cards with expandable topics
+- ✅ Quick-start code example block
+- ✅ Resources grid with GlowCards
+- ✅ Waitlist / notify form with success state
+- ✅ `generateMetadata()` with OG tags
+- 📋 Individual course pages `/learn/[courseId]`
+- 📋 Lesson viewer with code blocks + copy button
 - **Data:** extend `src/lib/data/courses.ts` with `lessons[]` array
 
-### 1.3 Mascot page  `/mascot` 📋
-- Full-screen Nova showcase
-- Lore timeline, art gallery (lightbox), ability cards
-- Video autoplay with poster fallback
-- **Data:** new `src/lib/data/mascot.ts`
+### 1.3 Mascot page  `/mascot` ✅
+- ✅ Full-screen Nova showcase (`app/mascot/page.tsx`)
+- ✅ Character profile + trait cards
+- ✅ Abilities grid (6 ability cards)
+- ✅ Lore timeline (5 era entries)
+- ✅ Art gallery with modal lightbox
+- ✅ `generateMetadata()` with OG tags
+- **Data:** `src/lib/data/mascot.ts` fully decoupled
 
 ---
 
-## Phase 2 — Shared UI Component Library 🚧
+## Phase 2 — Shared UI Component Library ✅
 
 Create these reusable primitives in `src/components/ui/`:
 
@@ -60,10 +67,10 @@ Create these reusable primitives in `src/components/ui/`:
 | `Button.tsx` | Primary / secondary / ghost variants | 🔴 High | ✅ Done |
 | `Badge.tsx` | Status chips (Live / Beta / WIP) | 🔴 High | ✅ Done |
 | `Card.tsx` | Glass card with optional glow border | 🔴 High | ✅ Done |
-| `SectionHeader.tsx` | Label + h2 + subtitle block | 🟡 Medium | 📋 Planned |
-| `GlowCard.tsx` | Card with colored radial glow on hover | 🟡 Medium | 📋 Planned |
-| `CodeBlock.tsx` | Syntax-highlighted code with copy | 🟡 Medium | 📋 Planned |
-| `Modal.tsx` | Accessible dialog/lightbox | 🟡 Medium | 📋 Planned |
+| `SectionHeader.tsx` | Label + h2 + subtitle block | 🟡 Medium | ✅ Done |
+| `GlowCard.tsx` | Card with colored radial glow on hover | 🟡 Medium | ✅ Done |
+| `CodeBlock.tsx` | Syntax-highlighted code with copy | 🟡 Medium | ✅ Done |
+| `Modal.tsx` | Accessible dialog/lightbox | 🟡 Medium | ✅ Done |
 | `Toast.tsx` | Notification snackbar | 🟢 Low | 📋 Planned |
 
 ---
@@ -86,16 +93,17 @@ Create these reusable primitives in `src/components/ui/`:
 
 ---
 
-## Phase 4 — Testing 🚧
+## Phase 4 — Testing ✅
 
 | Task | Status |
 |------|--------|
 | Install Vitest + jsdom + Testing Library | ✅ Done |
 | `vitest.config.ts` with `@/` alias support | ✅ Done |
+| `src/__tests__/setup.ts` with IntersectionObserver + ResizeObserver mocks | ✅ Done |
 | `src/__tests__/data/projects.test.ts` — schema validation | ✅ Done |
 | `src/__tests__/ui/Badge.test.tsx` — renders correct label + colour | ✅ Done |
-| `hooks/useTypewriter` — cycling + deletion logic | 📋 Planned |
-| `ui/ProgressBar` — snapshot + animation class | 📋 Planned |
+| `src/__tests__/hooks/useTypewriter.test.ts` — cycling + deletion logic | ✅ Done |
+| `src/__tests__/ui/ProgressBar.test.tsx` — snapshot + value rendering | ✅ Done |
 
 ---
 
@@ -171,8 +179,13 @@ color palette, and data-decoupling rules.
 
 1. ✅ **`Button.tsx` + `Badge.tsx` + `Card.tsx`** — reusable UI primitives ready
 2. ✅ **`/projects` route** — live with status + tag filtering, `generateMetadata`, AnimatePresence
-3. ✅ **`vitest` setup** — tests running for data schema + Badge component
-4. ✅ **`generateMetadata()`** per sub-page — `/projects` page has full OG metadata
-5. **`/learn` route** — next sub-page to build (data already in `lib/data/courses.ts`)
-6. **`/mascot` route** — dedicated Nova page
-7. **Deploy to Namecheap** — run `npm run build`, upload `out/` to `public_html/` via cPanel, activate AutoSSL
+3. ✅ **`vitest` setup** — tests running for data schema + Badge + useTypewriter + ProgressBar
+4. ✅ **`generateMetadata()`** per sub-page — `/projects`, `/learn`, `/mascot` all have full OG metadata
+5. ✅ **`/learn` route** — live with course cards, level filter, code example, resources, waitlist form
+6. ✅ **`/mascot` route** — live with portrait, traits, abilities, lore timeline, art gallery + modal
+7. ✅ **`SectionHeader.tsx` + `GlowCard.tsx` + `CodeBlock.tsx` + `Modal.tsx`** — Phase 2 complete
+8. ✅ **`useScrollProgress` hook** — scroll progress bar in Navigation
+9. ✅ **CI workflow** (`ci.yml`) — lint + type-check + test on every push/PR
+10. **`/projects/[slug]`** — next up: individual project detail pages
+11. **`/learn/[courseId]`** — individual course + lesson viewer
+12. **Deploy to Namecheap** — run `npm run build`, upload `out/` to `public_html/` via cPanel, activate AutoSSL

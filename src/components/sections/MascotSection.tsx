@@ -281,6 +281,12 @@ export default function MascotSection() {
             <p className="text-slate-500 text-sm italic border-l-2 border-purple-500/40 pl-4">
               &ldquo;Nova is the embodiment of Inceptus Omniforce — the bridge between human imagination and artificial intelligence.&rdquo;
             </p>
+            <a
+              href="/mascot"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors duration-200 mt-2"
+            >
+              Explore Nova&apos;s full story →
+            </a>
           </motion.div>
         </div>
       </div>

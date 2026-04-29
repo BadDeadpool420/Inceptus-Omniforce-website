@@ -124,7 +124,7 @@ export default function ProjectsShowcase() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <div className="inline-flex items-center gap-3 glass px-6 py-3 rounded-full border border-purple-500/20 text-slate-400 text-sm">
             <span className="relative flex h-2 w-2">
@@ -133,6 +133,12 @@ export default function ProjectsShowcase() {
             </span>
             More projects launching soon — follow along for updates
           </div>
+          <a
+            href="/projects"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+          >
+            View All Projects →
+          </a>
         </motion.div>
       </div>
     </section>

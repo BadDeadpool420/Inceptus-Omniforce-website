@@ -8,26 +8,26 @@ const LINKS: FooterColumn[] = [
   {
     section: "Explore",
     items: [
-      { label: "Projects", href: "#projects" },
-      { label: "Mascot", href: "#mascot" },
-      { label: "Learn AI", href: "#learn" },
-      { label: "About", href: "#about" },
+      { label: "Projects", href: "/projects" },
+      { label: "Mascot", href: "/mascot" },
+      { label: "Learn AI", href: "/learn" },
+      { label: "About", href: "/#about" },
     ],
   },
   {
     section: "Resources",
     items: [
-      { label: "Prompt Toolkit", href: "#learn" },
-      { label: "MCP Servers", href: "#learn" },
-      { label: "AI Roadmaps", href: "#learn" },
+      { label: "Prompt Toolkit", href: "/learn" },
+      { label: "MCP Servers", href: "/learn" },
+      { label: "AI Roadmaps", href: "/learn" },
     ],
   },
   {
     section: "Connect",
     items: [
       { label: "GitHub", href: "https://github.com/BadDeadpool420", target: "_blank" },
-      { label: "Community", href: "#learn" },
-      { label: "Newsletter", href: "#learn" },
+      { label: "Community", href: "/learn" },
+      { label: "Newsletter", href: "/learn" },
     ],
   },
 ];
